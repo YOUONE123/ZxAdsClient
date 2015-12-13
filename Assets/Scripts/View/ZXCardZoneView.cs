@@ -25,7 +25,7 @@ public class ZXCardZoneView : MonoBehaviour {
         viewingCardZone = new ZXCardZone(cardZone);
         for(int i = 0; i < viewingCardZone.cards.Count; i++)
         {
-            var cardView = GameController.GetInstance().GetCardView(cardZone.cards[i]);
+            var cardView = ViewController.GetInstance().GetCardView(cardZone.cards[i]);
             cardView.gameObject.transform.parent = this.gameObject.transform;
             cardView.gameObject.transform.position = this.GetCardViewPosition(i);
             cardView.gameObject.transform.rotation = this.gameObject.transform.rotation;
@@ -69,7 +69,7 @@ public class ZXCardZoneView : MonoBehaviour {
     public void UpdateCardView(int index)
     {
         //描画
-        var cardView = GameController.GetInstance().GetCardView(cardZone.cards[index]);
+        var cardView = ViewController.GetInstance().GetCardView(cardZone.cards[index]);
         cardView.gameObject.transform.parent = this.gameObject.transform;
         iTween.MoveTo(cardView.gameObject, iTween.Hash("position", this.GetCardViewPosition(index), "time", 0.5f));
         iTween.RotateTo(cardView.gameObject, iTween.Hash("rotation", this.gameObject.transform.eulerAngles, "time", 0.5f));
